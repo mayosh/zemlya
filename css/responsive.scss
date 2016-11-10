@@ -1,0 +1,118 @@
+@media (max-width: 1024px) {
+	body {
+		> header {
+			padding: 0 2%;
+			
+			.logo {
+				font-size: 18px;
+			}
+			nav {
+				ul {
+					li {
+						font-size: 13px;
+					}
+				}
+			}
+			.lang {
+				margin-top: 10px;
+			}
+		}
+		> main {
+			#zemlya_carousel {
+				.carousel-inner {
+					.carousel-caption {
+						font-size: 24px;
+					}
+				}
+			}
+			article {
+				.contacts {
+					.link {
+						a {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+		.search_field {
+			.simple_search_field {
+				.search_input {
+					input[type="text"] {
+						min-width: 370px;
+					}
+				}
+			}
+			.extended_search_field {
+				font-size: 10px;
+				
+				.map {
+					font-size: 10px;
+				}
+				h6,
+				label {
+					font-size: 12px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	body {
+		> header {
+			position: relative;
+			
+			.logo {
+				text-align: center;
+			}
+			nav {
+				text-align: center;
+				
+				ul {
+					li {
+						display: inline-block;
+						float: none;
+					}
+				}
+			}
+			.lang {
+				position: absolute;
+				right: 10px;
+			}
+		}
+		> main {
+			article {
+				> header {
+					flex-direction: column-reverse;
+				}
+				.contacts {
+					.link {
+						a {
+							width: 50%;							
+						}
+					}
+				}
+			}
+			#zemlya_carousel {
+				.carousel-inner {
+					.carousel-caption {
+						font-size: 20px;
+					}
+				}
+			}
+			.search_field {
+				.simple_search_field {
+					> div {
+						margin-top: 16px;
+					}
+				}
+				.extended_search_field {
+					.select-style {
+						margin-bottom: 10px;
+					}
+				}
+			}
+		}
+	}
+}
