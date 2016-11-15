@@ -1,8 +1,5 @@
-* {
-	//border: 1px red dashed;
-}
 .form {
-			background: $color_gray5;
+	background: $color_gray5;
 
 	h6,
 	label {
@@ -81,24 +78,16 @@
 	}
 	.select-style {
 		position: relative;
-		//margin: 0;
 		overflow: hidden;
 		padding: 0;
-		//min-width: 120px;
 		height: 35px;
 		border-radius: 3px;
 		background: #fff;
 		border-radius: 0;
-		//border: 1px solid #ccc;
-	
-		//background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 90% 50%;
 		select {
 			position: relative;
 			z-index: 1;
 			height: 35px;
-			//background: none;
-			//line-height: 35px;
-		
 			padding: 5px 8px;
 			width: 130%;
 			border: none;
@@ -230,11 +219,10 @@
 	  margin: 0;
 	  border: none;
 	  padding: 1px 2px;
-	  //border-radius: 14px;
 	  background: $color_white;
-	  //box-shadow: inset 0 1px 0 0 #0d0e0f, inset 0 -1px 0 0 #3a3d42;
-	  //-webkit-box-shadow: inset 0 1px 0 0 #0d0e0f, inset 0 -1px 0 0 #3a3d42;
 	  outline: none; /* no focus outline */
+	  position: relative;
+	  z-index: 1;
 	}
 	
 	input[type="range"]::-moz-range-track {
@@ -316,6 +304,20 @@
 	input[type=range]:focus::-ms-fill-upper {
 		background: red !important;
 	}
+	input[type=range]::-moz-range-track {
+		width: 100%;
+		height: 0px;
+		cursor: pointer;
+		animate: 0.2s;
+	}
+	input[type=range]::-moz-range-thumb {
+		height: 20px;
+		width: 39px;
+		background: $color_gray2;
+		border: 1px solid $color_lightgray;
+		cursor: pointer;
+	}
+
 	//other
 	.other {
 		display: block;
