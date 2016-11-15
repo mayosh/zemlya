@@ -1,0 +1,47 @@
+@media (max-width: 1024px) {
+  body > header {
+    padding: 0 2%; }
+    body > header .logo {
+      font-size: 18px; }
+    body > header nav ul li {
+      font-size: 13px; }
+    body > header .lang {
+      margin-top: 10px; }
+  body > main #zemlya_carousel .carousel-inner .carousel-caption {
+    font-size: 24px; }
+  body > main article .contacts .link a {
+    width: 100%; }
+  body .search_field .simple_search_field .search_input input[type="text"] {
+    min-width: 370px; }
+  body .search_field .extended_search_field {
+    font-size: 10px; }
+    body .search_field .extended_search_field .map {
+      font-size: 10px; }
+    body .search_field .extended_search_field h6,
+    body .search_field .extended_search_field label {
+      font-size: 12px; } }
+@media (max-width: 768px) {
+  body > header {
+    position: relative; }
+    body > header .logo {
+      text-align: center; }
+    body > header nav {
+      text-align: center; }
+      body > header nav ul li {
+        display: inline-block;
+        float: none; }
+    body > header .lang {
+      position: absolute;
+      right: 10px; }
+  body > main article > header {
+    flex-direction: column-reverse; }
+  body > main article .contacts .link a {
+    width: 50%; }
+  body > main #zemlya_carousel .carousel-inner .carousel-caption {
+    font-size: 20px; }
+  body > main .search_field .simple_search_field > div {
+    margin-top: 16px; }
+  body > main .search_field .extended_search_field .select-style {
+    margin-bottom: 10px; } }
+
+/*# sourceMappingURL=responsive.css.map */
