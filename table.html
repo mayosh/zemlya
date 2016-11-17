@@ -88,14 +88,17 @@
       </div>
       <!-- end carousel -->
       
-      <form class="search_field" action="">
+      <form class="search_field searchform" action="?">
+        <!--<input type="hidden" name="num_per_page" id="num_per_page_hf" value="11">-->
+        <input type="hidden" name="page_num" id="page_num_hf" value="0">
         <fieldset class="simple_search_field">
+          <!-- TODO: rename post_ad because AdBlocker hide it-->
           <a href="#" class="post_ad">Разместить объявление</a>
           <a href="#" class="map_link">Показать на карте</a>
           
           <div>
             <label class="search_input">
-              <input type="text" placeholder="Например, земельный участок в Тернопольской области "/>
+              <input type="text" name="search" placeholder="Например, земельный участок в Тернопольской области " id="search_txt_field" />
               <button>Поиск</button>
             </label>
             <button class="extended_search" role="button" data-toggle="collapse" href="#extended_search" aria-expanded="false" aria-controls="extended_search">
@@ -109,17 +112,17 @@
           <div class="row">
             <section class="col-sm-12 col-md-4">
               <h6>Что продается</h6>
-              
               <div class="row inner">
                 <div class="select-style col-sm-12 col-md-7">
-                  <select>
-                    <option>option 1</option>
-                    <option>option 12</option>
-                    <option>option 13</option>
+                  <select name="rights" id="rights">
+                    <option value="">---- выберите значенние ----</option>
+                    <option value="a">аренда — заключение договоров</option>
+                    <option value="b">аренда — продажа предприятия с заключёнными договорами аренды</option>
+                    <option value="c">субаренда — заключение договора субаренды</option>
                   </select>
                 </div>
                 <div class="select-style col-sm-12 col-md-4 col-md-offset-1">
-                  <select>
+                  <select name="upYear" id="up_year">
                     <option>2019</option>
                     <option>2018</option>
                     <option>2017</option>
@@ -128,23 +131,23 @@
               </div>
               <section class="range-slider">
                 <span class="rangeValues"></span>
-                <input value="5" min="0" max="15" step="0.5" type="range">
-                <input value="10" min="0" max="15" step="0.5" type="range">
+                <input value="5" min="0" max="15" step="0.5" type="range" id="rangeAreaMin">
+                <input value="10" min="0" max="15" step="0.5" type="range"  id="rangeAreaMax">
               </section>
               <div class="row">
-                <label class="col-xs-6 col-md-6">Min площадь, Га <input type="text"/></label>
-                <label class="col-xs-6 col-md-6">Мах площадь, Га <input type="text"/></label>
+                <label class="col-xs-6 col-md-6">Min площадь, Га <input type="text" name="areaMin" class="areaMin" /></label>
+                <label class="col-xs-6 col-md-6">Мах площадь, Га <input type="text" name="areaMax" class="areaMax" /></label>
               </div>
               <div class="row">
                 <div class="col-xs-6 col-md-6">
                   <h6>Здания, сооружения</h6>
                   <ul class="radio_field">
                     <li>
-                      <input id="r11" name="construction" type="radio" checked="checked"/>
+                      <input id="r11" name="hasConstruction" value="1" type="radio" checked="checked" />
                       <label for="r11">Да</label>
                     </li>
                     <li>               
-                      <input id="r12" name="construction" type="radio"/>
+                      <input id="r12" name="hasConstruction" value="" type="radio"/>
                       <label for="r12">Нет</label>
                     </li>
                   </ul>
@@ -153,11 +156,11 @@
                   <h6>Техника, оборудование</h6>
                   <ul class="radio_field">
                     <li>
-                      <input id="r21" name="facilities" type="radio" checked="checked"/>
+                      <input id="r21" name="hasFacilities" value="1" type="radio" checked="checked"/>
                       <label for="r21">Да</label>
                     </li>
                     <li>               
-                      <input id="r22" name="facilities" type="radio"/>
+                      <input id="r22" name="hasFacilities" value="" type="radio"/>
                       <label for="r22">Нет</label>
                     </li>
                   </ul>
@@ -166,11 +169,11 @@
               <div class="row">
                 <label class="inline col-xs-6 col-md-6">
                   Качество почв от/до
-                  <input type="text"/>
+                  <input type="text" name="bonitetFrom"  class="bonitetFrom"/>
                 </label>
                 <span class="col-xs-6 col-md-6">
                   <label class="inline">
-                    <input type="text"/>
+                    <input type="text" name="bonitetTo"  class="bonitetTo"/>
                     Кислотность почв  от/до   
                   </label>
                 </span>
@@ -178,30 +181,52 @@
             </section>
             <section class="col-xs-12 col-md-4">
               <h6>Расположение</h6>
-              
               <div class="row inner">
                 <div class="select-style col-xs-8 col-md-8">
-                  <select>
+                  <select name="place">
+                    <option value="">---- выберите значенние ----</option>
+                    <option>Автономная Республика Крым</option>
+                    <option>Винницкая область</option>
+                    <option>Волынская область</option>
+                    <option>Днепропетровская область</option>
+                    <option>Донецкая область</option>
+                    <option>Житомирская область</option>
+                    <option>Закарпатская область</option>
+                    <option>Запорожская область</option>
                     <option>Ивано-Франковская область</option>
-                    <option>option 12</option>
-                    <option>option 13</option>
+                    <option>Киевская область</option>
+                    <option>Кировоградская область</option>
+                    <option>Луганская область</option>
+                    <option>Львовская область</option>
+                    <option>Николаевская область</option>
+                    <option>Одесская область</option>
+                    <option>Полтавская область</option>
+                    <option>Ровенская область</option>
+                    <option>Сумская область</option>
+                    <option>Тернопольская область</option>
+                    <option>Харьковская область</option>
+                    <option>Херсонская область</option>
+                    <option>Хмельницкая область</option>
+                    <option>Черкасская область</option>
+                    <option>Черниговская область</option>
+                    <option>Черновицкая область</option>
                   </select>
                 </div>
                 <a class="map col-xs-3 col-md-3 col-md-offset-1" href="#">Указать на карте <span class="glyphicon glyphicon-map-marker">&nbsp;</span></a>
               </div>
                 <section class="range-slider">
                   <span class="rangeValues"></span>
-                  <input value="5" min="0" max="15" step="0.5" type="range">
-                  <input value="10" min="0" max="15" step="0.5" type="range">
+                  <input value="5" min="0" max="15" step="0.5" type="range" id="priceHaFrom">
+                  <input value="10" min="0" max="15" step="0.5" type="range" id="priceHaTo">
                 </section>
               <div>
                 <h6>Цена ($) за один Га почв  от/до</h6>
                 <div class="row">
                   <label class="col-xs-6 col-md-6">
-                    <input type="text"/>
+                    <input type="text" name="priceHaFrom" value="" class="priceHaFrom"/>
                   </label>
                   <label class="col-xs-6 col-md-6">
-                    <input type="text"/>
+                    <input type="text" name="priceHaTo" value="" class="priceHaTo"/>
                   </label>
                 </div>
               </div>
@@ -210,11 +235,11 @@
                   <h6>Другие активы</h6>
                   <ul class="radio_field">
                     <li>
-                      <input id="r31" name="assets" type="radio" checked="checked"/>
+                      <input id="r31" name="hasAssets" value="1" type="radio" checked="checked"/>
                       <label for="r31">Да</label>
                     </li>
                     <li>               
-                      <input id="r32" name="assets" type="radio"/>
+                      <input id="r32" name="hasAssets" value="" type="radio"/>
                       <label for="r32">Нет</label>
                     </li>
                   </ul>
@@ -223,11 +248,11 @@
                   <h6>Электроэнергия</h6>
                   <ul class="radio_field">
                     <li>
-                      <input id="r41" name="energy" type="radio" checked="checked"/>
+                      <input id="r41" name="hasEnergy" value="1" type="radio" checked="checked"/>
                       <label for="r41">Да</label>
                     </li>
                     <li>               
-                      <input id="r42" name="energy" type="radio"/>
+                      <input id="r42" name="hasEnergy" value="" type="radio"/>
                       <label for="r42">Нет</label>
                     </li>
                   </ul>
@@ -235,36 +260,38 @@
               </div>
               <div class="row">
                 <label class="inline col-xs-6 col-md-6">
-                  <input type="text"/>
-                  <input type="text"/>
+                  <input type="text" name="phFrom" value="" class="phFrom" />
+                  <input type="text" name="phTo" value=""  class="phTo"/>
                 </label>
-                <a class="col-xs-6 col-md-6" href="#">очистить результаты</a>
+                <a class="col-xs-6 col-md-6" href="#"  onclick="resetForm();return false;">очистить результаты</a>
               </div>
             </section>
             <section class="col-sm-12 col-md-4">
               <h6>Целевое назначение</h6>
               <div class="select-style">
-                <select>
+                <select name="purpose_id" id="intended_purpose">
                   <option>---- выберите значенние ----</option>
-                  <option>option 12</option>
-                  <option>option 13</option>
+                  <option>Застройка</option>
+                  <option>Коммерция</option>
+                  <option>Товарное сельхозпроизводство</option>
+                  <option>Личное крестьянское хозяйство (ОСГ)</option>
                 </select>
               </div>
               <div>
                 <section class="range-slider">
                   <span class="rangeValues"></span>
-                  <input value="5" min="0" max="15" step="0.5" type="range">
-                  <input value="10" min="0" max="15" step="0.5" type="range">
+                  <input value="5" min="0" max="15" step="0.5" type="range" id="priceFrom">
+                  <input value="10" min="0" max="15" step="0.5" type="range"  id="priceTo">
                 </section>
               </div>
               <div>
                 <h6>Цена за весь объект ($) почв от/до</h6>
                 <div class="row">
                   <label class="col-xs-6 col-md-6">
-                    <input type="text"/>
+                    <input type="text" name="priceFrom" class="priceFrom" />
                   </label>
                   <label class="col-xs-6 col-md-6">
-                    <input type="text"/>
+                    <input type="text" name="priceTo" class="priceTo"/>
                   </label>
                 </div>
               </div>
@@ -273,11 +300,11 @@
                   <h6>Газ</h6>
                   <ul class="radio_field">
                     <li>
-                      <input id="r51" name="gas" type="radio" checked="checked"/>
+                      <input id="r51" name="hasGas" value="1" type="radio" checked="checked"/>
                       <label for="r51">Да</label>
                     </li>
                     <li>               
-                      <input id="r52" name="gas" type="radio"/>
+                      <input id="r52" name="hasGas" value="" type="radio"/>
                       <label for="r52">Нет</label>
                     </li>
                   </ul>
@@ -286,18 +313,18 @@
                   <h6>Возможность полива</h6>
                   <ul class="radio_field">
                     <li>
-                      <input id="r61" name="water" type="radio" checked="checked"/>
+                      <input id="r61" name="hasWater" value="1" type="radio" checked="checked"/>
                       <label for="r61">Да</label>
                     </li>
                     <li>               
-                      <input id="r62" name="water" type="radio"/>
+                      <input id="r62" name="hasWater" value="" type="radio"/>
                       <label for="r62">Нет</label>
                     </li>
                   </ul>
                 </div>
               </div>
               <div class="row">
-                <span class="col-xs-6 col-md-6"><a href="#">свернуть фильтр</a></span>
+                <span class="col-xs-6 col-md-6"><a href="#" onclick="$('.extended_search').trigger('click'); return false;">свернуть фильтр</a></span>
                 <span class="link col-xs-6 col-md-6"><button>Показать варианты</button></span>
               </div>
             </section>
@@ -309,13 +336,14 @@
         <header>
           <div class="row">
             <div class="col-xs-12 col-md-6">
-              <b>Результаты поиска</b>    →   1456 объявлений из 345 678 000
+              <b>Результаты поиска</b> &rarr;
+              <span class="records-found"></span>  объявлений из <span class="records-total"></span>
             </div>
             <div class="col-xs-12 col-md-6 text-right">
-              <a href="#">очистить результаты</a>
+              <a href="#" onclick="$('.searchform')[0].reset(); return false;">очистить результаты</a>
               <span class="select">
                 показать по
-                <select>
+                <select name="num_per_page" class="num_per_page">
                   <option>12</option>
                   <option>24</option>
                   <option>36</option>
@@ -324,7 +352,7 @@
             </div>
           </div>
         </header>
-        <table cellpadding="0" cellspacing="0" summary="">
+        <table cellpadding="0" cellspacing="0" summary="" class="table_search_result">
           <thead>
             <tr>
               <th>Дата</th>
@@ -336,7 +364,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <!--<tr>
               <td>29.06.2016</td>
               <td>SDERWSXC4EdsE</td>
               <td>Продажа</td>
@@ -367,17 +395,18 @@
               <td>Киевская</td>
               <td>5 000</td>
               <td>1 000</td>
-            </tr>
+            </tr>-->
           </tbody>
         </table>
         <ul class="pagination">
-          <li><span>Первая</span></li>
+          <!--<li><span>Первая</span></li>
           <li><a href="#">1</a></li>
           <li><a href="#">2</a></li>
           <li><a href="#">3</a></li>
           <li><a href="#">4</a></li>
           <li><a href="#">5</a></li>
           <li><a href="#">Последняя</a></li>
+          -->
         </ul>
         <section class="inner">
           <p>Деятельность, связанная с оформлением земли в Украине, является специфической отраслью, которая требует досконального

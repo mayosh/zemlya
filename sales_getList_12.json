@@ -1,0 +1,150 @@
+{
+  "total": 102033,
+  "found": 75,
+  "rows": [
+    {
+      "id": 1,
+      "typeId": 1,
+      "uid": "c4ca4238a0b923820dcc509a6f75849b",
+      "rightId": 4,
+      "place": "\u041a\u0438\u0435\u0432\u0441\u043a\u0430\u044f",
+      "haPrice": "13416.65",
+      "price": 93916.55,
+      "creatorId": null,
+      "created": 1470014682000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 2,
+      "typeId": 1,
+      "uid": "c81e728d9d4c2f636f067f89cc14862c",
+      "rightId": 2,
+      "place": "\u041b\u044c\u0432\u043e\u0432\u0441\u043a\u0430\u044f",
+      "haPrice": "81498.89",
+      "price": 814988.9,
+      "creatorId": null,
+      "created": 1469959393000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 3,
+      "typeId": 1,
+      "uid": "eccbc87e4b5ce2fe28308fd9f2a7baf3",
+      "rightId": 1,
+      "place": "\u041a\u0438\u0435\u0432\u0441\u043a\u0430\u044f",
+      "haPrice": "48056.17",
+      "price": 432505.53,
+      "creatorId": null,
+      "created": 1473008731000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 4,
+      "typeId": 1,
+      "uid": "a87ff679a2f3e71d9181a67b7542122c",
+      "rightId": 3,
+      "place": "\u041a\u0438\u0435\u0432\u0441\u043a\u0430\u044f",
+      "haPrice": "9627.6",
+      "price": 96276,
+      "creatorId": null,
+      "created": 1475184326000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 5,
+      "typeId": 1,
+      "uid": "e4da3b7fbbce2345d7772b0674a318d5",
+      "rightId": 5,
+      "place": "\u0417\u0430\u043f\u043e\u0440\u043e\u0436\u0441\u043a\u0430\u044f",
+      "haPrice": "61769.10",
+      "price": 555921.9,
+      "creatorId": null,
+      "created": 1470206833000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 6,
+      "typeId": 2,
+      "uid": "1679091c5a880faf6fb5e6087eb1b2dc",
+      "rightId": 1,
+      "place": "\u0414\u043d\u0435\u043f\u0440\u043e\u043f\u0435\u0442\u0440\u043e\u0432\u0441\u043a\u0430\u044f",
+      "haPrice": "45413.95",
+      "price": 454139.5,
+      "creatorId": null,
+      "created": 1474942023000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 7,
+      "typeId": 2,
+      "uid": "8f14e45fceea167a5a36dedd4bea2543",
+      "rightId": 2,
+      "place": "\u041b\u044c\u0432\u043e\u0432\u0441\u043a\u0430\u044f",
+      "haPrice": "76800.71",
+      "price": 384003.55,
+      "creatorId": null,
+      "created": 1478431254000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 8,
+      "typeId": 2,
+      "uid": "c9f0f895fb98ab9159f51fd0297e236d",
+      "rightId": 2,
+      "place": "\u0417\u0430\u043f\u043e\u0440\u043e\u0436\u0441\u043a\u0430\u044f",
+      "haPrice": "371.90",
+      "price": 2975.2,
+      "creatorId": null,
+      "created": 1474143811000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 9,
+      "typeId": 2,
+      "uid": "45c48cce2e2d7fbdea1afc51c7c6ad26",
+      "rightId": 3,
+      "place": "\u041b\u044c\u0432\u043e\u0432\u0441\u043a\u0430\u044f",
+      "haPrice": "49830.76",
+      "price": 448476.84,
+      "creatorId": null,
+      "created": 1472738632000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 10,
+      "typeId": 1,
+      "uid": "d3d9446802a44259755d38e6d163e820",
+      "rightId": 1,
+      "place": "\u041a\u0438\u0435\u0432\u0441\u043a\u0430\u044f",
+      "haPrice": "57522.60",
+      "price": 402658.2,
+      "creatorId": null,
+      "created": 1476772895000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 11,
+      "typeId": 2,
+      "uid": "6512bd43d9caa6e02c990b0a82652dca",
+      "rightId": 5,
+      "place": "\u041b\u044c\u0432\u043e\u0432\u0441\u043a\u0430\u044f",
+      "haPrice": "96763.68",
+      "price": 483818.4,
+      "creatorId": null,
+      "created": 1473044986000,
+      "timestamp": 1479410132
+    },
+    {
+      "id": 12,
+      "typeId": 2,
+      "uid": "c20ad4d76fe97759aa27a0c99bff6710",
+      "rightId": 5,
+      "place": "\u041b\u044c\u0432\u043e\u0432\u0441\u043a\u0430\u044f",
+      "haPrice": "97065.34",
+      "price": 679457.38,
+      "creatorId": null,
+      "created": 1473509351000,
+      "timestamp": 1479410132
+    }
+  ]
+}
