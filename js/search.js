@@ -1,3 +1,5 @@
+//"use strict";
+
 var tableState = {pageNum:0, numPerPage:12, pagesInPaginator: 5, isLoaded: false};
 
 
@@ -11,7 +13,7 @@ Number.prototype.number_format = function (c, d, t) {
 
 // Wraper to display all prices in on standard
 function money_format(money) {
-    value = parseFloat(money);
+    var value = parseFloat(money);
     return value.number_format(2, '.', " ");
 }
 
@@ -66,7 +68,7 @@ function initSliders(){
 $(document).ready(function () {
 
     // Initialize Sliders
-    initSliders();
+    //initSliders();
 
     // document.getElementsByClassName("areaMin")[0].value = document.getElementById('rangeAreaMin').value;
     // document.getElementsByClassName("areaMax")[0].value = document.getElementById('rangeAreaMax').value;
@@ -74,28 +76,26 @@ $(document).ready(function () {
     //fill drop downs from API lists
     fillDropDowns();
 
-    var $num_per_page = $('.num_per_page');
+
     //init NumPerPage
-    $num_per_page.change(function (){
+    $('.num_per_page').change(function (){
         tableState.numPerPage = $(this).val();
         tableState.pageNum = 0;
         $('#page_num_hf').val(0);
         // add field to resotre page after browser refresh
         // if we will storage ajax query in history we can remove it
         //$('#num_per_page').val($(this).val());
-        loadTable();
+        loadTable(true);
     });
 
 
-    // init table
-    tableState.numPerPage = $num_per_page.val();
-    tableState.pageNum = $('#page_num_hf').val();
 
     // if we will storage ajax query in history or in localstorage we can remove row below
     //$('#num_per_page').val( tableState.numPerPage  );
 
-    // loadTable first time
-    loadTable();
+    var formData = getFormFieldsFromURI();
+    fillFormByParams(formData);
+    loadTable(false);
 
     // Submit form action
     $('.searchform').submit(function (ev) {
@@ -103,24 +103,90 @@ $(document).ready(function () {
         ev.preventDefault();
         tableState.pageNum = 0;
         $('#page_num_hf').val("0");
-        loadTable();
+        loadTable(true);
     })
 
 });
 //// History API
 // Добавляем обработчик события popstate,
 // происходящего при нажатии на кнопку назад/вперед в браузере
-// window.addEventListener("popstate", function(e) {
-//     // Передаем текущий URL
-//     getContent(location.pathname, false);
-// });
-//
-// function getContent(url) {
-//     console.log(url);
-//     console.log(history.state);
-//     //fill form and load table
-//
-// }
+window.addEventListener("popstate", function() {
+    // Передаем текущий URL
+    //getContent(location.pathname, false);
+
+    var stateObjForHistory = history.state;
+    if(stateObjForHistory) {
+        tableState = stateObjForHistory.tableState;
+    }
+    else {
+        tableState.pageNum =  0 ;
+        $('#page_num_hf').val(0);
+    }
+    //we can get vars from history: formData = stateObjForHistory.form;
+    var formData = getFormFieldsFromURI();
+    fillFormByParams(formData);
+    loadTable(false);
+});
+
+function fillFormByParams(formData){
+    $.each(formData, function(name, val){
+        var $el = $('[name="'+name+'"]'),
+            type = $el.attr('type');
+        switch(type){
+            case 'checkbox':
+                $el.attr('checked', 'checked');
+                break;
+            case 'radio':
+                $el.filter('[value="'+val+'"]').attr('checked', 'checked');
+                break;
+            default:
+                $el.val(val);
+        }
+    });
+
+    // fill txt fields for range sliders
+    var val = $('.areaMin').val();
+    if(val )$('#rangeAreaMin').val( val );
+
+    val = $('.areaMax').val();
+    if(val )$('#rangeAreaMax').val( val );
+
+    val = $('.priceHaFrom').val();
+    if(val )$('#priceHaFrom').val( val );
+
+    val = $('.priceHaTo').val();
+    if(val )$('#priceHaTo').val( val );
+
+    val = $('.priceFrom').val();
+    if(val )$('#priceFrom').val( val );
+
+    val = $('.priceTo').val();
+    if(val )$('#priceTo').val( val );
+
+    //reinit sliders
+    initSliders();
+    // init table
+    tableState.numPerPage = $('.num_per_page').val();
+    tableState.pageNum = $('#page_num_hf').val();
+
+}
+
+function getFormFieldsFromURI() {
+
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    var urlParams = {};
+    while (match = search.exec(query))
+        urlParams[decode(match[1])] = decode(match[2]);
+
+    return urlParams;
+}
+
+
 // fill drop down block "Целевое назначение",  Что продается, Право до указанного года
 function fillDropDowns() {
     var url = 'types_getList.json';
@@ -157,7 +223,7 @@ function resetForm() {
 }
 
 //load and display data in table
-function loadTable(){
+function loadTable( saveInHistory ){
 
 
     var url = 'sales_getList_'+tableState.numPerPage+'.json';
@@ -171,18 +237,20 @@ function loadTable(){
         $tbody.show('slow');
     });
 
+    var $searchform = $('.searchform');
 
 
 
     // make Query
-    $.post(url, $('.searchform').serialize() + "&num_per_page=" + tableState.numPerPage, function (result) {
+    $.post(url, $searchform.serialize() + "&num_per_page=" + tableState.numPerPage, function (result) {
 
-        var stateObj = { form: $('.searchform').serializeArray(), tableState: tableState };
-        // History API
-        // if(tableState.isLoaded) {
-        //     history.pushState(stateObj, "", "?"+$('.searchform').serialize() + "&num_per_page=" + tableState.numPerPage);
-        // }
-
+        if(saveInHistory) {
+            var stateObjForHistory = { form: $searchform.serializeArray(), tableState: tableState };
+            // History API
+            if(tableState.isLoaded) {
+                history.pushState(stateObjForHistory, "", "?"+ $searchform.serialize() + "&num_per_page=" + tableState.numPerPage);
+            }
+        }
 
         tableState.isLoaded = true;
         // remove LOADING message
@@ -213,11 +281,11 @@ function loadTable(){
         var countOfPages = Math.ceil( result.found/tableState.numPerPage );
 
 
-        $paginator = '';
+        var paginatorStr = '';
         if(tableState.pageNum==0) {
-            $paginator = '<li><span>Первая</span></li>';
+            paginatorStr = '<li><span>Первая</span></li>';
         }else {
-            $paginator = '<li><a href="#" onclick="return false;" data-num="0">Первая</a></li>';
+            paginatorStr = '<li><a href="#" onclick="return false;" data-num="0">Первая</a></li>';
         }
         var pageNumFrom = 0,
             pageNumTo = tableState.pagesInPaginator;
@@ -237,21 +305,21 @@ function loadTable(){
 
         for(var i=pageNumFrom; i<pageNumTo; i++) {
             if(tableState.pageNum==i) {
-                $paginator += '<li><span>'+ (i+1) + '</span></li>';
+                paginatorStr += '<li><span>'+ (i+1) + '</span></li>';
             }else {
-                $paginator += '<li><a href="#" onclick="return false;"  data-num="'+i+'">'+ (i+1) + '</a></li>';
+                paginatorStr += '<li><a href="#" onclick="return false;"  data-num="'+i+'">'+ (i+1) + '</a></li>';
             }
         }
         if(tableState.pageNum==countOfPages-1) {
-            $paginator += '<li><span>Последняя</span></li>';
+            paginatorStr += '<li><span>Последняя</span></li>';
         }else {
-            $paginator += '<li><a href="#" onclick="return false;" data-num="'+(countOfPages-1)+'">Последняя</a></li>';
+            paginatorStr += '<li><a href="#" onclick="return false;" data-num="'+(countOfPages-1)+'">Последняя</a></li>';
         }
-        $('.pagination').html($paginator);
+        $('.pagination').html(paginatorStr);
         $('.pagination a').click(function (){
             tableState.pageNum = $(this).data('num');
             $('#page_num_hf').val( tableState.pageNum );
-            loadTable();
+            loadTable( true);
         });
 
         // show record found from total
