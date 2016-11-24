@@ -241,8 +241,9 @@ function iniBuyForm(){
                     });
                 }).fail(function (){
                     $('.forminprocess').hide('slow', function(){
-                        $('.formresult').show('slow', function(){
-                            $('.formresult').append('TODO: set message CONNECTION ERROR')
+                        $('.formresult').append('TODO: set message CONNECTION ERROR')
+                                        .show('slow', function(){
+
                         });
                     });
                 });
@@ -373,7 +374,7 @@ function initLists(){
             });
 
             // its work for after refresh browser if some fields already checked
-            $('.right_id_buy:checked, .right_id_sell:checked, .purpose:checked, .place_sell:checked, .place_buy:checked').each(function (){
+            $('.right_id_buy:checked, .right_id_sell:checked, .purpose:checked, .place_sell:checked, .place_buy:checked').each(function (i,val){
                 if($(this).is(':checked')) {
                     // search first sub fields in tags
                     if($(this).next().children().prop('required', true).prop('disabled', false).focus().size()==0) {
