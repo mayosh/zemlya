@@ -1,0 +1,10 @@
+.form .rightselllist [type="checkbox"]:checked + input {
+    display: inline-block;
+}
+.form .rightselllist [type="checkbox"] + input {
+    display: none;
+    width:130px;
+}
+.formarea {
+    display:none;
+}
