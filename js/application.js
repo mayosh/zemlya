@@ -1,39 +1,15 @@
 $(document).ready(function () {
 
-    // initCardnumber
-    var $cadnuminput = $('.id_number input').mask('0000000000:00:000:0000');
-        // we can use $(document).on('keypress', '.id_number input', function(){ });
-    // but I dont like it so I use explicit bind event
-    function initCadnum($element) {
-        $element.on('keypress',function(){
-            var charCount = $(this).val().length;
-            var $new_elem = $('<input type="text" name="cadnum" placeholder="0000000000:00:000:0000" class="cadnum" />');
-            if(charCount >= 21) {
-                $(".id_number").append( $new_elem );
-                $new_elem.trigger('focus');
-                initCadnum($new_elem);
-            }
-        });
-    }
-    initCadnum( $cadnuminput );
+
 
 
     // fill block "Целевое назначение",  Что продается, Право до указанного года
     // list filled in JSP file
-    initLists();
-
-    // init navigation buttons
-    $('.collapsecustom a').click(function(ev){
-        ev.preventDefault();
-        $('.collapsecustom li').removeClass('active');
-        $(this).parent().addClass('active');
-        $('.' + $(this).data('area')).hide();
-        $('#' + $(this).data('target')).show();
-    });
+    //initLists();
 
     initSellForm();
-    iniBuyForm();
-
+    initBuyForm();
+    //initServiceForm();
 });
 
 $.fn.serializeObject = function()
@@ -61,13 +37,34 @@ $.fn.serializeObject = function()
 
 
 function initSellForm() {
+
+    // initCardnumber
+    var $cadnuminput = $('.id_number input').mask('0000000000:00:000:0000');
+    // we can use $(document).on('keypress', '.id_number input', function(){ });
+    // but I dont like it so I use explicit bind event
+    function initCadnum($element) {
+        $element.on('keypress',function(){
+            var charCount = $(this).val().length;
+            var $new_elem = $('<input type="text" name="cadnum" placeholder="0000000000:00:000:0000" class="cadnum" />');
+            if(charCount >= 21) {
+                $(".id_number").append( $new_elem );
+                $new_elem.trigger('focus');
+                initCadnum($new_elem);
+            }
+        });
+    }
+    initCadnum( $cadnuminput );
+
+
+
     //url = './_sales/create'
-    url = '../server/create.php';
-    $('#form_sell_item').submit(function (ev){
+    var url = '../server/create.php';
+    $('#sellform').submit(function (ev){
         ev.preventDefault();
         var $form = $(this);
         var data = $form.serializeObject();
 
+        console.log('YO!');
 
         // some field will send in specific structure
         var sendData = {
@@ -77,7 +74,7 @@ function initSellForm() {
             purposes: [], //[{id:1}, {id:2}, {id:3, txt_other}]
             purpose_other: "",
             cadnum: [],// ["1111111111:11:111:1111", "2222222222:22:222:2222", "3333334342:34:234:2342"]
-            addServiceRequire: []
+            services: []
         };
 
         // Fill Rights
@@ -132,22 +129,24 @@ function initSellForm() {
         });
         delete data['cadnum'];
 
-        if(typeof data["addServiceRequire"]=="string") {
-            data["addServiceRequire"] = [].concat(data["addServiceRequire"]);
+        if(typeof data["services"]=="string") {
+            data["services"] = [].concat(data["services"]);
         }
-        $.each(data['addServiceRequire'], function (i, item){
-            sendData.addServiceRequire.push(item);
+        $.each(data['services'], function (i, item){
+            sendData.services.push(item);
         });
-        delete data['addServiceRequire'];
+        delete data['services'];
 
 
 
         data = $.extend({}, sendData, data);
 
+
+
         $('#sendeddata').html('sended data: ' +  JSON.stringify(data));
 
         // use class thow section tag not work in old browsers
-        $(this).parents('.formarea').hide('slow', function (){
+        $('.formarea').hide('slow', function (){
             $('.forminprocess').show('slow', function(){
                 // send data
                 $.post(url, {data: JSON.stringify(data)}, function(result) {
@@ -173,8 +172,11 @@ function initSellForm() {
     });
 }
 
-function iniBuyForm(){
-    $('#form_buy_item').submit(function (ev){
+function initBuyForm(){
+    var url = '../server/create.php';
+
+    $('#buyform').submit(function (ev){
+        console.log('?YY?Y?!!!');
         ev.preventDefault();
         var $form = $(this);
         var data = $form.serializeObject();
@@ -183,7 +185,7 @@ function iniBuyForm(){
             rights: [],  //[{id: 1, "year":2015}, {id:2}, {id:8, txt: "txt_other"}} } ]
             rights_other: "",
             places:[],
-            addServiceRequire:[]
+            services:[]
             // purposes: [], //[{id:1}, {id:2}, {id:3, txt_other}]
             // purpose_other: "",
             // cadnum: []// ["1111111111:11:111:1111", "2222222222:22:222:2222", "3333334342:34:234:2342"]
@@ -214,22 +216,22 @@ function iniBuyForm(){
             delete data["rights"];
             delete data["right_id_other"];
         }
-        if(typeof data["addServiceRequire"]=="string") {
-            data["addServiceRequire"] = [].concat(data["addServiceRequire"]);
+        if(typeof data["services"]=="string") {
+            data["services"] = [].concat(data["services"]);
         }
-        $.each(data['addServiceRequire'], function (i, item){
-            sendData.addServiceRequire.push(item);
+        $.each(data['services'], function (i, item){
+            sendData.services.push(item);
         });
-        delete data['addServiceRequire'];
+        delete data['services'];
 
 
         data = $.extend({}, sendData, data);
 
         $('#sendeddata').html('sended data: ' +  JSON.stringify(data));
 
-
+        console.log('YO!');
         // use class thow section tag not work in old browsers
-        $(this).parents('.formarea').hide('slow', function (){
+        $('.formarea').hide('slow', function (){
             $('.forminprocess').show('slow', function(){
                 // send data
                 $.post(url, {data: JSON.stringify(data)}, function(result) {
@@ -250,8 +252,6 @@ function iniBuyForm(){
 
             });
         });
-
-
         return false;
     });
 
@@ -263,8 +263,9 @@ function resetHtml5Validation() {
     $('.right_id_buy, .right_id_sell, .purpose, .place_sell, .place_buy').each(function(){
         // reset inner field
         if($(this).is(':checked')) {
-            // situation not posible
-            console.log('situation not posible');
+            // disable required flag
+            $('.' + $(this).attr('class')).prop('required', false);
+
             if($(this).next().children().prop('required', true).prop('disabled', false).size()==0) {
                 $(this).next().prop('required', true).prop('disabled', false).focus();
             }

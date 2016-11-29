@@ -8,3 +8,7 @@
 .formarea {
     display:none;
 }
+
+.formcontent {
+    display: block;
+}
