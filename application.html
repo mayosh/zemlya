@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     
-    <meta name="title" content="Земля для бизнеса в Украине">
-    <meta name="description" content="Земля для бизнеса в Украине">
+        <meta name="title" content="Земля для бизнеса в Украине">
+        <meta name="description" content="Земля для бизнеса в Украине">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -14,6 +14,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/add2application.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,7 +24,7 @@
     <![endif]-->
   </head>
   <body>
-    <header class="">
+    <header class="header">
       <div class="inner row">
         <div class="logo col-sm-12 col-md-5">Земля для бизнеса в Украине</div>
         <nav class="col-sm-12 col-md-6">
@@ -35,7 +36,7 @@
             <li><a href="#">Контакты</a></li>
           </ul>
         </nav>
-        
+
         <div class="lang col-md-1 dropdown">
           <button class="current_lang dropdown-toggle" type="button" id="lang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             ua
@@ -47,473 +48,19 @@
         </div>
       </div>
     </header>
-    
+
     <main>
         <p class="breadcrumbs">
             <a href="#">Главная</a>
             <a href="#">Статьи</a>
-            <span>Объявление</span> 
+            <span>Объявление</span>
         </p>
-        
-        <h1>Форма заполнения объявления о продаже</h1>
-        <form class="form row" action="">
-            <fieldset class="col-xs-6 col-md-6">
-                <ul class="form_list">
-                    <li><strong>Уникальный номер объявления: </strong> 123</li>
-                    <li><strong>Имя Админа, который провёл последнюю модерацию: </strong> Admin Name</li>
-                    <li><strong>Дата и время публикации в Таблице: </strong> <time datetime="2016-11-11 12:09">2016-11-11 12-09</time></li>
-                    <li>
-                        <h6>Выберите из списка какие права продаются</h6>
-                        <label><input type="checkbox"/> право собственности</label>
-                        <label><input type="checkbox"/> аренда - заключение договоров</label>
-                        <label><input type="checkbox"/> аренда - продажа предприятия с заключёнными договорами аренды</label>
-                        <label><input type="checkbox"/> субаренда - заключение договора субаренды</label>
-                        <label><input type="checkbox"/> эмфитевзис - заключение договоров</label>
-                        <label><input type="checkbox"/> эмфитевзис - продажа оформленного права эмфитевзиса</label>
-                        <label><input type="checkbox"/> право постоянного пользования</label>
-                        <label><input type="checkbox"/> отвод государственной (коммунальной) земли</label>
-                        <label class="other">
-                            <input type="checkbox"/> Другое
-                            <textarea maxlength="2000"></textarea>
-                        </label>
-                    </li>
-                    <li>
-                        <h6>Расположение</h6>
-<!--    Тут, замість чекбоксів, я б додала теги. Але тоді, тут має бути хінт для користувача      -->
-                        <label><input type="checkbox"/> Киевская область</label>
-                        <label><input type="checkbox"/> Винницкая область</label>
-                        <label><input type="checkbox"/> Волынская область</label>
-                        <label><input type="checkbox"/> АР Крым</label>
-                    </li>
-                    <li>
-                        <h6>Целевое назначение</h6>
-                        <label><input type="checkbox"/> Застройка</label>
-                        <label><input type="checkbox"/> Коммерция</label>
-                        <label><input type="checkbox"/> Товарное сельхозпроизводство</label>
-                        <label><input type="checkbox"/> Личное крестьянское хозяйство (ОСГ)</label>
-                        <label><input type="checkbox"/> Фермерство</label>
-                        <label><input type="checkbox"/> Подсобное хозяйство</label>
-                        <label><input type="checkbox"/> Садоводство</label>
-                        <label><input type="checkbox"/> Пастбище</label>
-                        <label><input type="checkbox"/> Сенокос</label>
-                        <label class="other">
-                            <input type="checkbox"/> Другое
-                            <textarea maxlength="2000"></textarea>
-                        </label>
-                    </li>
-                    <li>
-                        <h6>Кадастровый номер</h6>
-                        <label>
-                            Укажите кадастровый номер участка, одного из участков или всех участков, которые входят в массив
-                            <span class="id_number">
-                                <input type="text" name="id_number" placeholder="0000000000:00:000:0000" />
-                            </span>
-                        </label>
-                    </li>
-                    <li>
-                        <ul class="row">
-                            <li class="col-xs-6 col-md-6">
-                                <h6>
-                                    Min площадь, га
-                                    <small class="hint" data-tooltip="Если вы готовы продать часть участка, впишите минимальную площадь такой части в га"></small>
-                                </h6>
-                                <input type="text"/>
-                            </li>
-                            <li class="col-xs-6 col-md-6">
-                                <h6>
-                                    Общая площадь, га
-                                    <small class="hint" data-tooltip="Общая, максимальная площадь, которую вы готовы продать"></small>
-                                </h6>
-                                <input type="text"/>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <ul class="row">
-                            <li class="col-xs-6 col-md-6">
-                                <label>Цена за один га, USD</label>
-                                <input type="text"/>
-                            </li>
-                            <li class="col-xs-6 col-md-6">
-                                <label>Цена за весь объект, USD</label>
-                                <input type="text"/>
-                            </li>
-                        </ul>
-                    <li>
-                        <h6>Возможен торг</h6>
-                        <ul class="radio_field">
-                            <li>
-                                <input type="radio" name="bargain" id="b1" checked="checked">
-                                <label for="b1">Да</label>
-                            </li>
-                            <li>               
-                                <input type="radio" name="bargain" id="b2"/>
-                                <label for="b2">Нет</label>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <label>Здания, сооружения</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Техника, оборудование</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Другие активы</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Электроэнергия</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Газ</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                </ul>
-            </fieldset>
-            <fieldset class="col-xs-6 col-md-6">
-                <ul class="form_list">
-                    <li>
-                        <label>Вода, возможность полива</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Качество почв</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Кислотность почв</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Как сегодня используется объект продажи?</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Дополнительная информация</label>
-                        <textarea maxlength="5000"></textarea>
-                    </li>
-                    <li>
-                        <h6>Объявление размещает</h6>
-                        <ul class="radio_field">
-                            <li>
-                                <input type="radio" name="publication" id="p1" checked="checked">
-                                <label for="p1">собственник</label>
-                            </li>
-                            <li>               
-                                <input type="radio" name="publication" id="p2"/>
-                                <label for="p2">посредник</label>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <label>Сведения о комиссии</label>
-                        <textarea maxlength="2000" placeholder="Укажите готов ли собственник заплатить комиссию за продажу, в каком размере, порядок взаимодействия с посредниками"></textarea>
-                    </li>
-                    <li>
-                        <label>Контактное лицо, должность</label>
-                        <textarea maxlength="200"></textarea>
-                    </li>
-                    <li>
-                        <label>Компания</label>
-                        <textarea maxlength="200"></textarea>
-                    </li>
-                    <li>
-                        <label>Электронная почта</label>
-                        <textarea maxlength="200"></textarea>
-                    </li>
-                    <li>
-                        <label>Сайт компании</label>
-                        <textarea maxlength="200"></textarea>
-                    </li>
-                    <li>
-                        <h6>Нужны ли Вам дополнительные услуги по:</h6>
-                        <label>целевому поиску покупателей <input type="checkbox"/></label>
-                        <label>проведению рекламной кампании <input type="checkbox"/></label>
-                        <label>поиску зарубежных инвесторов <input type="checkbox"/></label>
-                        <label>оценке объекта продажи <input type="checkbox"/></label>
-                        <label>разработке оптимальной схемы продажи <input type="checkbox"/></label>
-                        <label>оформлению земли <input type="checkbox"/></label>
-                        <label>внесению участков в кадастр/регистрации прав собственности <input type="checkbox"/></label>
-                        <label>защите интересов в суде <input type="checkbox"/></label>
-                        <label>подготовке и сопровождению сделки по продаже <input type="checkbox"/></label>
-                        <label>консультации по другим вопросам <input type="checkbox"/></label>
-                    </li>
-                    <li>
-                        <input type="file"/>
-                    </li>
-                    <li>
-                        <input type="file"/>
-                    </li>
-                    <li class="link"><button>Submit</button></li>
-                </ul>
-            </fieldset>
-        </form>
-        
-        <h1>Форма заполнения объявления о покупке</h1>
-        <form class="form row" action="">
-            <fieldset class="col-xs-6 col-md-6">
-                <ul class="form_list">
-                    <li><strong>Дата заполнения формы: </strong> 345</li>
-                    <li><strong>Уникальный номер объявления: </strong> 987</li>
-                    <li><strong>Имя Админа, который провёл последнюю модерацию: </strong> Admin Name</li>
-                    <li><strong> Дата и время публикации в Таблице: </strong> <time datetime="2016-11-11 12:09">2016-11-11 12-09</time></li>
-                    <li>
-                        <ul class="row">
-                            <li class="col-xs-6 col-md-6">
-                                <h6>
-                                    Min площадь, га
-                                    <small class="hint" data-tooltip="Минимальная площадь земли, которую Вы хотите приобрести"></small>
-                                </h6>
-                                <input type="text"/>
-                            </li>
-                            <li class="col-xs-6 col-md-6">
-                                <h6>
-                                    Max площадь, га
-                                    <small class="hint" data-tooltip="Max площадь земли, которую Вы хотите приобрести"></small>
-                                </h6>
-                                <input type="text"/>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h6>Расположение</h6>
-<!--    Тут, замість чекбоксів, я б додала теги. Але тоді, тут має бути хінт для користувача      -->
-                        <label><input type="checkbox"/> Киевская область</label>
-                        <label><input type="checkbox"/> Винницкая область</label>
-                        <label><input type="checkbox"/> Волынская область</label>
-                        <label><input type="checkbox"/> АР Крым</label>
-                    </li>
-                    <li>
-                        <label>Дополнительная информация о расположении</label>
-                        <textarea maxlength="5000"></textarea>
-                    </li>
-                    <li>
-                        <h6>
-                            Какие варианты покупки Вы рассматриваете
-                            <small class="hint" data-tooltip="Выберите из списка какие какие варианты оформления Вам подходят"></small>
-                        </h6>
-                        <label for="">нужна консультация <input type="checkbox"/></label>
-                        <label for="">право собственности <input type="checkbox"/></label>
-                        <label class="ifchecked" for="">
-                            аренда — заключение договоров
-                            <input type="checkbox"/>
-                            <span>min. до какого года: <input type="date"/></span>
-                        </label>
-                        <label class="ifchecked" for="">
-                            аренда — покупка предприятия с заключёнными договорами аренды
-                            <input type="checkbox"/>
-                            <span>min. до какого года: <input type="date"/></span>
-                        </label>
-                        <label class="ifchecked" for="">
-                            субаренда — заключение договора субаренды
-                            <input type="checkbox"/>
-                            <span>min. до какого года: <input type="date"/></span>
-                        </label>
-                        <label class="ifchecked" for="">
-                            эмфитевзис — заключение договоров
-                            <input type="checkbox"/>
-                            <span>min. до какого года: <input type="date"/></span>
-                        </label>
-                        <label class="ifchecked" for="">
-                            эмфитевзис — покупка оформленного права эмфитевзиса
-                            <input type="checkbox"/>
-                            <span>min. до какого года: <input type="date"/></span>
-                        </label>
-                        <label for="">право постоянного пользования <input type="checkbox"/></label>
-                        <label for="">отвод государственной (коммунальной) земли <input type="checkbox"/></label>
-                        <label class="other">
-                            <input type="checkbox"/> Другое
-                            <textarea maxlength="2000"></textarea>
-                        </label>
-                    </li>
-                    <li>
-                        <ul class="row">
-                            <li class="col-xs-6 col-md-6">
-                                <label>Max. цена за один га, USD</label> <input type="text"/>
-                            </li>
-                            <li class="col-xs-6 col-md-6">
-                                <label>Max. за весь объект, USD</label> <input type="text"/>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <label>Max. % ставки аренды</label>
-                        <input type="text"/>
-                    </li>
-                    <li>
-                        <label>Здания, сооружения</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Техника, оборудование</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Техника, оборудование</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Другие активы</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Электроэнергия</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Газ</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                </ul>
-            </fieldset>
-            <fieldset class="col-xs-6 col-md-6">
-                <ul class="form_list">
-                    <li>
-                        <label>Вода, возможность полива</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Качество почв</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Кислотность почв</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Дополнительная информация</label>
-                        <textarea maxlength="5000"></textarea>
-                    </li>
-                    <li>
-                        <label>Для чего будет использоваться земля?</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <label>Какова срочность покупки?</label>
-                        <textarea maxlength="2000"></textarea>
-                    </li>
-                    <li>
-                        <h6>Готовы ли оплатить услуги посредника?</h6>
-                        <ul class="radio_field">
-                            <li>
-                                <input type="radio" name="broker" id="m1" checked="checked">
-                                <label for="m1">Да</label>
-                            </li>
-                            <li>               
-                                <input type="radio" name="broker" id="m2"/>
-                                <label for="m2">Нет</label>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h6>Нужен ли предварительный аудит объекта покупки?</h6>
-                        <ul class="radio_field">
-                            <li>
-                                <input type="radio" name="audit" id="a1" checked="checked">
-                                <label for="a1">Да</label>
-                            </li>
-                            <li>               
-                                <input type="radio" name="audit" id="a2"/>
-                                <label for="a2">Нет</label>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h6>Нужно ли сопровождение сделки?</h6>
-                        <ul class="radio_field">
-                            <li>
-                                <input type="radio" name="supervision" id="s1" checked="checked">
-                                <label for="s1">Да</label>
-                            </li>
-                            <li>               
-                                <input type="radio" name="supervision" id="s2"/>
-                                <label for="s2">Нет</label>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <label>Контактное лицо, должность</label>
-                        <input type="text" maxlength="200"/>
-                    </li>
-                    <li>
-                        <label>Компания</label>
-                        <input type="text" maxlength="200"/>
-                    </li>
-                    <li>
-                        <ul class="row">
-                            <li class="col-xs-6 col-md-6">
-                                <label>Электронная почта</label>
-                                <input type="email"/>
-                            </li>
-                            <li class="col-xs-6 col-md-6">
-                                <label>Сайт компании</label>
-                                <input type="url" maxlength="200"/>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                    </li>
-                    <li>
-                        <h6>Нужны ли Вам дополнительные услуги по:</h6>
-                        <label for="">целевому поиску продацов <input type="checkbox"/></label>
-                        <label for="">проведению рекламной кампании <input type="checkbox"/></label>
-                        <label for="">поиску зарубежных инвесторов <input type="checkbox"/></label>
-                        <label for="">оценке объекта покупки <input type="checkbox"/></label>
-                        <label for="">разработке оптимальной схемы покупки <input type="checkbox"/></label>
-                        <label for="">оформлению земли <input type="checkbox"/></label>
-                        <label for="">внесению участков в кадастр/регистрации прав собственности <input type="checkbox"/></label>
-                        <label for="">налогообложению <input type="checkbox"/></label>
-                        <label for="">консультации по другим вопросам <input type="checkbox"/></label>
-                    </li>
-                    <li>
-                        <input type="file"/>
-                    </li>
-                    <li>
-                        <input type="file"/>
-                    </li>
-                    <li class="link"><button>Submit</button></li>
-                </ul>
-            </fieldset>
-        </form>
-        
-        <h1>Форма заполнения объявления о предоставлении услуг</h1>
-        <form class="form row" action="">
-            <fieldset class="col-xs-6 col-md-6">
-                <ul class="form_list">
-                    <li>
-                        <label>Услуги, которые Вы хотите предложить</label>
-                        <textarea maxlength="5000"></textarea>
-                    </li>
-                    <li>
-                        <label>Контактное лицо, должность</label>
-                        <input type="text" maxlength="200"/>
-                    </li>
-                    <li>
-                        <label>Компания</label>
-                        <input type="text" maxlength="200"/>
-                    </li>
-                    <li>
-                        <label>Электронная почта</label>
-                        <input type="email" maxlength="200"/>
-                    </li>
-                    <li>
-                        <label>Сайт компании</label>
-                        <input type="url" maxlength="200"/>
-                    </li>
-                    <li>
-                        <input type="file"/>
-                    </li>
-                    <li>
-                        <input type="file"/>
-                    </li>
-                    <li class="link"><button>Submit</button></li>
-                </ul>
-            </fieldset>
-        </form>
+
+        <ul class="nav nav-pills collapsecustom" >
+            <li  role="presentation"><a href="application_sell.html" data-target="sellform" data-area="formarea">Добавить объявление о продаже</a></li>
+            <li  role="presentation"><a href="application_buy.html" data-target="buyform"  data-area="formarea">Добавить Объявление о покупке</a></li>
+            <li  role="presentation"><a href="application_service.html" data-target="servicesform" data-area="formarea">Добавить объявление о предоставлении услуг</a></li>
+        </ul>
     </main>
     <footer>
       <div class="inner">
@@ -533,30 +80,11 @@
     </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mask.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.id_number input').mask('0000000000:00:000:0000');
-            //$('.id_number').mask("0000000000:00:000:0000", {placeholder: "__________:__:___:____"});
-        });
-        
-        $(document).ready(function(){
-		$('.id_number input').on('keyup',function(){
-		   var charCount = $(this).val().length;
-           
-           $new_elem = $('<input type="text" name="id_number" placeholder="0000000000:00:000:0000" />');
-           
-            if(charCount == 22) {
-                
-                $(".id_number").append( $new_elem );
-            }
-            else {
-            }
-		});
-	});        
-    </script>
+    <script src="js/application.js"></script>
+
   </body>
 </html>

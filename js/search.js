@@ -96,7 +96,7 @@ $(document).ready(function () {
     var formData = getFormFieldsFromURI();
     fillFormByParams(formData);
     loadTable(false);
-
+    
     // Submit form action
     $('.searchform').submit(function (ev) {
         // stop standart form submition
@@ -190,6 +190,7 @@ function getFormFieldsFromURI() {
 // fill drop down block "Целевое назначение",  Что продается, Право до указанного года
 function fillDropDowns() {
     var url = 'types_getList.json';
+    // var url = '_types/getList';
     $.post(url, function (result) {
         var intended_purposeStr = '';
         var rightsStr = '';
@@ -227,6 +228,7 @@ function loadTable( saveInHistory ){
 
 
     var url = 'sales_getList_'+tableState.numPerPage+'.json';
+    //var url = '_sales/getList ';
     var $tbody = $('.table_search_result tbody');
 
     // remove old rows
